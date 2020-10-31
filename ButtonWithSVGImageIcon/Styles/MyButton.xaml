@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DataUploading.ResourceDictionary"
+                    xmlns:controls="clr-namespace:WpfControls.Controls"
+                    xmlns:svgc="http://sharpvectors.codeplex.com/svgc/">
+
+
+    <Style x:Key="Button_Style_4" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="ButtonGrid">
+                        <Grid.Background>
+                            <SolidColorBrush Color="Black" Opacity="0.001" />
+                        </Grid.Background>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1">
+                                <svgc:SvgViewbox x:Name="ButtonSVGImage" Source="{TemplateBinding controls:MyButtonProperties.ButtonSVGImage}"></svgc:SvgViewbox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="ButtonSVGImage" Property="Source" Value="{Binding Path=(controls:MyButtonProperties.HoverButtonSVGImage),RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value=".9"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Opacity" Value=".6"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.4"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+</ResourceDictionary>
